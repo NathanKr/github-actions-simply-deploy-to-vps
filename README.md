@@ -48,35 +48,19 @@ todo nath ---> make this an image
  <li>should i use ssh agent </li>
  </ul>
 
-<h3>Design question : the repo is privte so how the VPS can clone it</h3>
-
+<h3>Design question : the repo is privte so how to access it</h3>
 Using github actions the best solution is to use GITHUB_TOKEN . 
-The runner will use https with the GITHUB_TOKEN
 
-<h4>When Does This Work Best?</h4>
-<ul>
-  <li>
-    <strong>GitHub Actions Manages the Deployment:</strong>
-    The entire deployment process (including fetching or updating the repository) is handled in the GitHub Actions workflow.
-  </li>
-  <li>
-    <strong>Minimal VPS Configuration:</strong>
-    Ideal when the VPS doesn’t need long-term credentials to manage the repository independently.
-  </li>
-  <li>
-    This solution is especially suited for modern CI/CD pipelines where security and simplicity are priorities.
-  </li>
-</ul>
 
-<h3>Design question : how using GITHB_TOKEN the repo is privte so how the VPS can clone it</h3>
+<h3>Design question : how the vps get the repo</h3>
 
 <ol>
-<li>GITHB_TOKEN is used by the runner to authenticate with github so he can clone the repo to the runner tempororay folder</li>
-<li>The vps can get the private repo in two ways : 1) clone from the vps 2) trnasfer from the runner to the vps using ssh </li>
+<li>clone by the vps (runner need to copy GITHUB_TOKEN to the vps)</li>
+<li>trnasfer from the runner to the vps using ssh (runner use GITHUB_TOKEN and scp to copy the repo to the vps)</li>
 </ol>
 
 
- <h3>Design question : where to store VPS SSH private key so the runner can access it </h3>
+<h3>Design question : where to store VPS SSH private key so the runner can access it </h3>
 The best solution to store screts in github is to use Github secrets which is part of the repo. And this is what i will use
 
 <h2>Code Structure</h2>
