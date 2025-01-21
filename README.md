@@ -55,8 +55,8 @@ Using github actions the best solution is to use GITHUB_TOKEN .
 <h3>Design question : how the vps get the repo</h3>
 
 <ol>
-<li>clone by the vps (runner need to copy GITHUB_TOKEN to the vps)</li>
-<li>trnasfer from the runner to the vps using ssh (runner use GITHUB_TOKEN and scp to copy the repo to the vps)</li>
+<li>clone by the vps . runner need to copy GITHUB_TOKEN to the vps</li>
+<li>trnasfer from the runner to the vps using ssh .runner use GITHUB_TOKEN and scp to copy the repo to the vps</li>
 </ol>
 
 
