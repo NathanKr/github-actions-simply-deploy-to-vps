@@ -1,19 +1,19 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.4 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.4">
   <diagram name="Page-1" id="dFaxbiBSKHuPToxD2f61">
-    <mxGraphModel dx="791" dy="470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="780" dy="504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="wt3cL6tScTZiM4ChI6Qj-1" value="&lt;font style=&quot;font-size: 18px; color: rgb(15, 15, 15);&quot;&gt;&lt;b style=&quot;&quot;&gt;Your local Machine&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" parent="1" vertex="1">
+        <mxCell id="wt3cL6tScTZiM4ChI6Qj-1" value="&lt;font style=&quot;font-size: 18px; color: rgb(51, 51, 255);&quot;&gt;&lt;b style=&quot;&quot;&gt;Your local Machine&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.pc;" parent="1" vertex="1">
           <mxGeometry x="181" y="273" width="100" height="75" as="geometry" />
         </mxCell>
-        <mxCell id="wt3cL6tScTZiM4ChI6Qj-2" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b style=&quot;&quot;&gt;Github Actions Runner&lt;/b&gt;&lt;/font&gt;" style="image;html=1;image=img/lib/clip_art/computers/Server_128x128.png" parent="1" vertex="1">
-          <mxGeometry x="610" y="273" width="80" height="80" as="geometry" />
+        <mxCell id="wt3cL6tScTZiM4ChI6Qj-2" value="&lt;font style=&quot;font-size: 18px; color: rgb(51, 51, 255);&quot;&gt;&lt;b style=&quot;&quot;&gt;Github Actions Runner&lt;/b&gt;&lt;/font&gt;" style="image;html=1;image=img/lib/clip_art/computers/Server_128x128.png" parent="1" vertex="1">
+          <mxGeometry x="610" y="273" width="80" height="77" as="geometry" />
         </mxCell>
-        <mxCell id="wt3cL6tScTZiM4ChI6Qj-3" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b style=&quot;&quot;&gt;VPS&lt;/b&gt;&lt;/font&gt;" style="image;html=1;image=img/lib/clip_art/computers/Server_128x128.png" parent="1" vertex="1">
+        <mxCell id="wt3cL6tScTZiM4ChI6Qj-3" value="&lt;font style=&quot;font-size: 18px; color: rgb(51, 51, 255);&quot;&gt;&lt;b style=&quot;&quot;&gt;VPS&lt;/b&gt;&lt;/font&gt;" style="image;html=1;image=img/lib/clip_art/computers/Server_128x128.png" parent="1" vertex="1">
           <mxGeometry x="421" y="108" width="80" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="wt3cL6tScTZiM4ChI6Qj-5" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b style=&quot;&quot;&gt;Github&lt;/b&gt;&lt;/font&gt;" style="image;html=1;image=img/lib/clip_art/computers/Server_128x128.png" parent="1" vertex="1">
+        <mxCell id="wt3cL6tScTZiM4ChI6Qj-5" value="&lt;font style=&quot;font-size: 18px; color: rgb(51, 51, 255);&quot;&gt;&lt;b style=&quot;&quot;&gt;Github&lt;/b&gt;&lt;/font&gt;" style="image;html=1;image=img/lib/clip_art/computers/Server_128x128.png" parent="1" vertex="1">
           <mxGeometry x="421" y="428" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="1P1AMUzo28egn4HJqmAG-1" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.042;entryY=0.421;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="wt3cL6tScTZiM4ChI6Qj-1" target="wt3cL6tScTZiM4ChI6Qj-5" edge="1">
@@ -22,18 +22,18 @@
             <mxPoint x="481" y="288" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="1P1AMUzo28egn4HJqmAG-2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;git push to main branch&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1P1AMUzo28egn4HJqmAG-1" vertex="1" connectable="0">
+        <mxCell id="1P1AMUzo28egn4HJqmAG-2" value="&lt;font style=&quot;font-size: 14px; color: rgb(234, 107, 102);&quot;&gt;&lt;b&gt;1. git push to main branch&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1P1AMUzo28egn4HJqmAG-1" vertex="1" connectable="0">
           <mxGeometry x="-0.013" y="-5" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="1P1AMUzo28egn4HJqmAG-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="wt3cL6tScTZiM4ChI6Qj-5" target="wt3cL6tScTZiM4ChI6Qj-2" edge="1">
+        <mxCell id="1P1AMUzo28egn4HJqmAG-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="wt3cL6tScTZiM4ChI6Qj-5" target="wt3cL6tScTZiM4ChI6Qj-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="511" y="448" as="sourcePoint" />
             <mxPoint x="602" y="362" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="1P1AMUzo28egn4HJqmAG-4" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;run workflow file&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1P1AMUzo28egn4HJqmAG-3" vertex="1" connectable="0">
+        <mxCell id="1P1AMUzo28egn4HJqmAG-4" value="&lt;font style=&quot;font-size: 14px; color: rgb(234, 107, 102);&quot;&gt;&lt;b&gt;2. run workflow file&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1P1AMUzo28egn4HJqmAG-3" vertex="1" connectable="0">
           <mxGeometry x="-0.013" y="-5" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -44,45 +44,56 @@
             <mxPoint x="631" y="154" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="1P1AMUzo28egn4HJqmAG-14" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Clone private repo using VPS - SSH public \ private key authentication&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1P1AMUzo28egn4HJqmAG-13" vertex="1" connectable="0">
+        <mxCell id="1P1AMUzo28egn4HJqmAG-14" value="&lt;font style=&quot;font-size: 14px; color: rgb(234, 107, 102);&quot;&gt;&lt;b&gt;4. copy private repo using VPS - SSH public \ private key authentication&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="1P1AMUzo28egn4HJqmAG-13" vertex="1" connectable="0">
           <mxGeometry x="-0.013" y="-5" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="82ulN0faD1H_4VVEOkZe-1" value="VPS - SSH private \ public keys files" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/SSH_Keys.svg;" vertex="1" parent="1">
+        <mxCell id="82ulN0faD1H_4VVEOkZe-1" value="VPS - SSH private \ public keys files" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/SSH_Keys.svg;" parent="1" vertex="1">
           <mxGeometry x="120" y="170" width="68" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="82ulN0faD1H_4VVEOkZe-2" value="" style="endArrow=none;html=1;rounded=0;exitX=0.662;exitY=1.017;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="82ulN0faD1H_4VVEOkZe-1" target="wt3cL6tScTZiM4ChI6Qj-1">
+        <mxCell id="82ulN0faD1H_4VVEOkZe-2" value="" style="endArrow=none;html=1;rounded=0;exitX=0.662;exitY=1.017;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="82ulN0faD1H_4VVEOkZe-1" target="wt3cL6tScTZiM4ChI6Qj-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="93" y="308" as="sourcePoint" />
             <mxPoint x="143" y="258" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="82ulN0faD1H_4VVEOkZe-3" value="VPS - SSH public key" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/SSH_Keys.svg;" vertex="1" parent="1">
+        <mxCell id="82ulN0faD1H_4VVEOkZe-3" value="VPS - SSH public key" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/SSH_Keys.svg;" parent="1" vertex="1">
           <mxGeometry x="273" y="98" width="68" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="82ulN0faD1H_4VVEOkZe-4" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="82ulN0faD1H_4VVEOkZe-4" value="" style="endArrow=none;html=1;rounded=0;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="333" y="138" as="sourcePoint" />
             <mxPoint x="421" y="140" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="82ulN0faD1H_4VVEOkZe-5" value="VPS - SSH private key" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/SSH_Keys.svg;" vertex="1" parent="1">
+        <mxCell id="82ulN0faD1H_4VVEOkZe-5" value="VPS - SSH private key" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/other/SSH_Keys.svg;" parent="1" vertex="1">
           <mxGeometry x="730" y="250" width="68" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="82ulN0faD1H_4VVEOkZe-7" value="&lt;font style=&quot;font-size: 12px; color: rgb(20, 20, 20); font-weight: normal;&quot;&gt;VPS - SSH private key stored in github repo sercert&lt;/font&gt;" style="sketch=0;html=1;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=1;fontColor=#999999;shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJzdmc1MzkzNyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTc1LjE2MDYzIDEwNC4yNzczNSIgaGVpZ2h0PSIxMDQuMjc3MzVtbSIgd2lkdGg9IjE3NS4xNjA2M21tIj4mI3hhOyAgPHBhdGggZD0ibSAxMjguNTY5MSwzNC4xMTUyMzYgdiAxMi45Nzg1MTYgbCAtMTIuMzM3ODksLTQuMzgwODYgLTIuNTA5NzcsNy4wNjgzNiAxMi41NDEwMiw0LjQ1MzEyNSAtOC41NjA1NSwxMS40MzE2NCA2LjAwMTk2LDQuNDk2MDk0IDguNTk5NjEsLTExLjQ4MDQ2OSA4LjQ5NDE0LDExLjQ2NDg0NCA2LjAyNzM0LC00LjQ2NDg0NCAtOC40NzI2NiwtMTEuNDMzNTkzIDEyLjY0MDYzLC00LjQ2Njc5NyAtMi41LC03LjA3MDMxMyAtMTIuNDIzODMsNC4zOTA2MjUgViAzNC4xMTUyMzYgWiBtIC00NC43NzY4NzIsMCB2IDEyLjk3ODUxNiBsIC0xMi4zMzc4OTEsLTQuMzgwODYgLTIuNTA5NzY1LDcuMDY4MzYgMTIuNTQxMDE1LDQuNDUzMTI1IC04LjU2MDU0NywxMS40MzE2NCA2LjAwMTk1Myw0LjQ5NjA5NCA4LjU5OTYxLC0xMS40ODA0NjkgOC40OTQxNCwxMS40NjQ4NDQgNi4wMjczNDcsLTQuNDY0ODQ0IC04LjQ3MjY1OSwtMTEuNDMzNTkzIDEyLjY0MDYyOSwtNC40NjY3OTcgLTIuNSwtNy4wNzAzMTMgLTEyLjQyMzgzMiw0LjM5MDYyNSBWIDM0LjExNTIzNiBaIG0gLTQ0Ljc3Njg1LDAgdiAxMi45Nzg1MTYgbCAtMTIuMzM3ODkxLC00LjM4MDg2IC0yLjUwOTc2NSw3LjA2ODM2IDEyLjU0MTAxNSw0LjQ1MzEyNSAtOC41NjA1NDcsMTEuNDMxNjQgNi4wMDE5NTMsNC40OTYwOTQgOC41OTk2MSwtMTEuNDgwNDY5IDguNDk0MTQsMTEuNDY0ODQ0IDYuMDI3MzQ0LC00LjQ2NDg0NCAtOC40NzI2NTYsLTExLjQzMzU5MyAxMi42NDA2MjUsLTQuNDY2Nzk3IC0yLjUsLTcuMDcwMzEzIC0xMi40MjM4MjgsNC4zOTA2MjUgViAzNC4xMTUyMzYgWiBNIDE3NS4xNjA2NCwxMGUtNyBWIDEwNC4yNzczNCBoIC0zNy4yNzY4MiBjIC0xLjIwODU3LDAgLTIuMDAyNDgsLTAuNjIzNTQgLTIuMDAyNDgsLTEuODY2MzQgdiAtOS45MjcyMzggYyAwLC0xLjE0ODI1IDAuNzE1OTYsLTEuNzA2NDIgMi4wMDI0OCwtMS43MDY0MiBoIDIzLjc3NjgyIFYgMTMuNSBoIC0yMy45NDQ5OCBjIC0xLjQwODU1LDAgLTEuOTUxNTEsLTAuNzUyMzE3IC0xLjk1MTUxLC0yLjA3NDQ4MiBWIDEuODQyNzI2IGMgMCwtMS4yNjU5NzEgMC42OTgwOCwtMS44NDI3MjUgMS45NTE1MSwtMS44NDI3MjUgeiBNIDAsMCB2IDEwNC4yNzczNSBoIDM3LjI3NjgxNCBjIDEuMjA4NTcxLDAgMi4wMDI0ODMsLTAuNjIzNTQgMi4wMDI0ODMsLTEuODY2MzQgdiAtOS45MjcyMzggYyAwLC0xLjE0ODI1IC0wLjcxNTk1NywtMS43MDY0MiAtMi4wMDI0ODMsLTEuNzA2NDIgSCAxMy41IFYgMTMuNDk5OTk5IGggMjMuOTQ0OTczIGMgMS40MDg1NTIsMCAxLjk1MTUxMSwtMC43NTIzMTcgMS45NTE1MTEsLTIuMDc0NDgyIFYgMS44NDI3MjUgQyAzOS4zOTY0ODQsMC41NzY3NTQgMzguNjk4NDEsMCAzNy40NDQ5NzMsMCBaIiBzdHlsZT0iY29sb3I6IzAwMDAwMDtvcGFjaXR5OjE7ZmlsbDojNDI4NWY0O2ZpbGwtb3BhY2l0eToxOy1pbmtzY2FwZS1zdHJva2U6bm9uZSIvPiYjeGE7PC9zdmc+;" vertex="1" parent="1">
+        <mxCell id="82ulN0faD1H_4VVEOkZe-7" value="&lt;font style=&quot;font-size: 12px; color: rgb(20, 20, 20); font-weight: normal;&quot;&gt;VPS - SSH private key stored in github repo sercert&lt;/font&gt;" style="sketch=0;html=1;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=1;fontColor=#999999;shape=image;aspect=fixed;imageAspect=0;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJzdmc1MzkzNyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMTc1LjE2MDYzIDEwNC4yNzczNSIgaGVpZ2h0PSIxMDQuMjc3MzVtbSIgd2lkdGg9IjE3NS4xNjA2M21tIj4mI3hhOyAgPHBhdGggZD0ibSAxMjguNTY5MSwzNC4xMTUyMzYgdiAxMi45Nzg1MTYgbCAtMTIuMzM3ODksLTQuMzgwODYgLTIuNTA5NzcsNy4wNjgzNiAxMi41NDEwMiw0LjQ1MzEyNSAtOC41NjA1NSwxMS40MzE2NCA2LjAwMTk2LDQuNDk2MDk0IDguNTk5NjEsLTExLjQ4MDQ2OSA4LjQ5NDE0LDExLjQ2NDg0NCA2LjAyNzM0LC00LjQ2NDg0NCAtOC40NzI2NiwtMTEuNDMzNTkzIDEyLjY0MDYzLC00LjQ2Njc5NyAtMi41LC03LjA3MDMxMyAtMTIuNDIzODMsNC4zOTA2MjUgViAzNC4xMTUyMzYgWiBtIC00NC43NzY4NzIsMCB2IDEyLjk3ODUxNiBsIC0xMi4zMzc4OTEsLTQuMzgwODYgLTIuNTA5NzY1LDcuMDY4MzYgMTIuNTQxMDE1LDQuNDUzMTI1IC04LjU2MDU0NywxMS40MzE2NCA2LjAwMTk1Myw0LjQ5NjA5NCA4LjU5OTYxLC0xMS40ODA0NjkgOC40OTQxNCwxMS40NjQ4NDQgNi4wMjczNDcsLTQuNDY0ODQ0IC04LjQ3MjY1OSwtMTEuNDMzNTkzIDEyLjY0MDYyOSwtNC40NjY3OTcgLTIuNSwtNy4wNzAzMTMgLTEyLjQyMzgzMiw0LjM5MDYyNSBWIDM0LjExNTIzNiBaIG0gLTQ0Ljc3Njg1LDAgdiAxMi45Nzg1MTYgbCAtMTIuMzM3ODkxLC00LjM4MDg2IC0yLjUwOTc2NSw3LjA2ODM2IDEyLjU0MTAxNSw0LjQ1MzEyNSAtOC41NjA1NDcsMTEuNDMxNjQgNi4wMDE5NTMsNC40OTYwOTQgOC41OTk2MSwtMTEuNDgwNDY5IDguNDk0MTQsMTEuNDY0ODQ0IDYuMDI3MzQ0LC00LjQ2NDg0NCAtOC40NzI2NTYsLTExLjQzMzU5MyAxMi42NDA2MjUsLTQuNDY2Nzk3IC0yLjUsLTcuMDcwMzEzIC0xMi40MjM4MjgsNC4zOTA2MjUgViAzNC4xMTUyMzYgWiBNIDE3NS4xNjA2NCwxMGUtNyBWIDEwNC4yNzczNCBoIC0zNy4yNzY4MiBjIC0xLjIwODU3LDAgLTIuMDAyNDgsLTAuNjIzNTQgLTIuMDAyNDgsLTEuODY2MzQgdiAtOS45MjcyMzggYyAwLC0xLjE0ODI1IDAuNzE1OTYsLTEuNzA2NDIgMi4wMDI0OCwtMS43MDY0MiBoIDIzLjc3NjgyIFYgMTMuNSBoIC0yMy45NDQ5OCBjIC0xLjQwODU1LDAgLTEuOTUxNTEsLTAuNzUyMzE3IC0xLjk1MTUxLC0yLjA3NDQ4MiBWIDEuODQyNzI2IGMgMCwtMS4yNjU5NzEgMC42OTgwOCwtMS44NDI3MjUgMS45NTE1MSwtMS44NDI3MjUgeiBNIDAsMCB2IDEwNC4yNzczNSBoIDM3LjI3NjgxNCBjIDEuMjA4NTcxLDAgMi4wMDI0ODMsLTAuNjIzNTQgMi4wMDI0ODMsLTEuODY2MzQgdiAtOS45MjcyMzggYyAwLC0xLjE0ODI1IC0wLjcxNTk1NywtMS43MDY0MiAtMi4wMDI0ODMsLTEuNzA2NDIgSCAxMy41IFYgMTMuNDk5OTk5IGggMjMuOTQ0OTczIGMgMS40MDg1NTIsMCAxLjk1MTUxMSwtMC43NTIzMTcgMS45NTE1MTEsLTIuMDc0NDgyIFYgMS44NDI3MjUgQyAzOS4zOTY0ODQsMC41NzY3NTQgMzguNjk4NDEsMCAzNy40NDQ5NzMsMCBaIiBzdHlsZT0iY29sb3I6IzAwMDAwMDtvcGFjaXR5OjE7ZmlsbDojNDI4NWY0O2ZpbGwtb3BhY2l0eToxOy1pbmtzY2FwZS1zdHJva2U6bm9uZSIvPiYjeGE7PC9zdmc+;" parent="1" vertex="1">
           <mxGeometry x="553" y="508" width="45.36" height="27" as="geometry" />
         </mxCell>
-        <mxCell id="82ulN0faD1H_4VVEOkZe-9" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="wt3cL6tScTZiM4ChI6Qj-5" target="82ulN0faD1H_4VVEOkZe-7">
+        <mxCell id="82ulN0faD1H_4VVEOkZe-9" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="wt3cL6tScTZiM4ChI6Qj-5" target="82ulN0faD1H_4VVEOkZe-7" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="463" y="360" as="sourcePoint" />
             <mxPoint x="513" y="310" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="82ulN0faD1H_4VVEOkZe-10" value="" style="endArrow=none;html=1;rounded=0;exitX=0.992;exitY=0.367;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="wt3cL6tScTZiM4ChI6Qj-2" target="82ulN0faD1H_4VVEOkZe-5">
+        <mxCell id="82ulN0faD1H_4VVEOkZe-10" value="" style="endArrow=none;html=1;rounded=0;exitX=0.992;exitY=0.367;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="wt3cL6tScTZiM4ChI6Qj-2" target="82ulN0faD1H_4VVEOkZe-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="430" y="340" as="sourcePoint" />
             <mxPoint x="480" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4tM8BJ8Cdk6xwwyuz0K-1" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="wt3cL6tScTZiM4ChI6Qj-2" target="wt3cL6tScTZiM4ChI6Qj-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="410" as="sourcePoint" />
+            <mxPoint x="430" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="A4tM8BJ8Cdk6xwwyuz0K-2" value="&lt;font style=&quot;font-size: 14px; color: rgb(234, 107, 102);&quot;&gt;&lt;b style=&quot;&quot;&gt;3. use https and GITHUB_TOKEN to git clone the private repo&lt;/b&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="A4tM8BJ8Cdk6xwwyuz0K-1">
+          <mxGeometry x="-0.3556" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
       </root>

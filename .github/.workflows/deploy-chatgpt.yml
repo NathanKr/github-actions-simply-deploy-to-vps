@@ -1,0 +1,31 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to VPS
+        env:
+          GIT_REPO: https://github.com/your-username/your-private-repo.git
+          DEPLOY_DIR: /path/to/app
+        run: |
+          ssh -o StrictHostKeyChecking=no user@your-vps-ip <<EOF
+          if [ ! -d "$DEPLOY_DIR" ]; then
+            git clone $GIT_REPO $DEPLOY_DIR
+          else
+            cd $DEPLOY_DIR
+            git pull origin main
+          fi
+          # Add deployment commands (e.g., restart services, install dependencies)
+          EOF

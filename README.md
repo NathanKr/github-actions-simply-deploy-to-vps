@@ -25,7 +25,6 @@ The following technologies are used:
 
 
 
-
 <h2>Usage</h2>
 ....
 
@@ -50,9 +49,11 @@ todo nath ---> make this an image
  </ul>
 
 <h3>Design question : the repo is privte so how the VPS can clone it</h3>
-Using github actions the best solution is to use GITHUB_TOKEN . 
 
-When Does This Work Best?
+Using github actions the best solution is to use GITHUB_TOKEN . 
+The runner will use https with the GITHUB_TOKEN
+
+<h4>When Does This Work Best?</h4>
 <ul>
   <li>
     <strong>GitHub Actions Manages the Deployment:</strong>
@@ -66,6 +67,13 @@ When Does This Work Best?
     This solution is especially suited for modern CI/CD pipelines where security and simplicity are priorities.
   </li>
 </ul>
+
+<h3>Design question : how using GITHB_TOKEN the repo is privte so how the VPS can clone it</h3>
+
+<ol>
+<li>GITHB_TOKEN is used by the runner to authenticate with github so he can clone the repo to the runner tempororay folder</li>
+<li>the VPS ssh keys are used to copy the repo from the runner to the VPS</li>
+</ol>
 
 
  <h3>Design question : where to store VPS SSH private key so the runner can access it </h3>
