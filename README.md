@@ -72,7 +72,7 @@ The runner will use https with the GITHUB_TOKEN
 
 <ol>
 <li>GITHB_TOKEN is used by the runner to authenticate with github so he can clone the repo to the runner tempororay folder</li>
-<li>the VPS ssh keys are used to copy the repo from the runner to the VPS</li>
+<li>The vps can get the private repo in two ways : 1) clone from the vps 2) trnasfer from the runner to the vps using ssh </li>
 </ol>
 
 
