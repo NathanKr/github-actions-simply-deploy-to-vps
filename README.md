@@ -30,15 +30,29 @@ The following technologies are used:
 ....
 
 
+
 <h2>Design</h2>
+<h3>High level schema</h3>
+There are four components
+<ul>
+<li>your local machine - issue from here e.g. git push to main branch</li>
+<li>Github - your private repo to be deployed on VPS is here</li>
+<li>Github Actions Runner - this run the workflow file</li>
+<li>VPS - here the private repo is deployed</li>
+
+</ul>
+todo nath ---> make this an image
+<img src='./figs/high-level-schema.drawio'/>
 
 <h3>Design questions</h3>
 <ul>
  <li>should i use ssh agent </li>
  <li>how to authentication against github from the VPS</li>
+ <li>where to store VPS SSH private key so the runner can access it </li>
 </ul>
 
-
+ <h3>Design answer : where to store VPS SSH private key so the runner can access it </h3>
+The best solution to store screts in github is to use Github secrets which is part of the repo. And this is what i will use
 
 <h2>Code Structure</h2>
 ....
