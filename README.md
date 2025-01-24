@@ -18,7 +18,7 @@ You have a private repo on Github and you want to deploy it to VPS upon git post
 2. need to change on Github repo dashboard :
 - click on branch
 - click on 'New Branch' and enter a name 'development'
-
+ 
 The result appear in the following image
 
 <img src='./figs/created-development-branch-on-github-dashboard.png'/>
