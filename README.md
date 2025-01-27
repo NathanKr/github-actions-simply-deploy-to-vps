@@ -1,8 +1,18 @@
+<h1>todo - remove at end</h1>
+<ul>
+<li>should the event should be to push to development  ????</li>
+<li>what to say about copy token ????</li>
+<li>what to say about config file ????</li>
+<li>should i install packages ????</li>
+<li>where is this workflow ???? as template ?? </li>
+</ul>
+
+
 <h1>Project Name</h1>
-....
+Basic VPS deploy workflow using Github Actions
 
 <h2>Project Description</h2>
-Github actions workflow that clone private repo on vps deploy dir. The prev deploy dir is renamed  
+Github actions workflow that clone private repo on vps deploy folder. The prev deploy folder is renamed  
 
 <h2>Motivation</h2>
 You have a private repo on Github and you want to deploy it to VPS upon git post to main branch using a workflow file
@@ -45,7 +55,7 @@ navigate to your repo setting and scroll down to 'Secrets and variables' as show
 
 
 <h2>Usage</h2>
-....
+you simply push to development branch ???????? should this stay development ??????
 
 
 <h2>High level design</h2>
@@ -86,6 +96,7 @@ The best solution to store screts in github is to use Github secrets which is pa
 It does not matter so i choose the cicd private key on the pc (\\wsl$\Ubuntu\home\nathan\.ssh\cicd_user_server_digital_ocean) for VPS_CICD_PRIVATE_KEY 
 
 <h2>Code Structure</h2>
+put here all workflow or part of it ???????
 ....
 
 <h2>Demo</h2>
