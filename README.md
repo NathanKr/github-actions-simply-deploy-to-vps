@@ -1,8 +1,5 @@
 <h1>todo - remove at end</h1>
 <ul>
-<li>should the event should be to push to development  ????</li>
-<li>what to say about copy token ????</li>
-<li>what to say about config file ????</li>
 <li>should i install packages ????</li>
 <li>where is this workflow ???? as template ?? </li>
 </ul>
@@ -39,7 +36,7 @@ navigate to your repo setting and scroll down to 'Secrets and variables' as show
 
 
 <h2>Usage</h2>
-you simply push to development branch ???????? should this stay development ??????
+you simply push to main branch
 
 
 <h2>High level design</h2>
@@ -84,7 +81,7 @@ put here all workflow or part of it ???????
 ....
 
 <h2>Demo</h2>
-following push to development branch you can check the staus on github dashboard as shown in the following image
+following push to main branch you can check the staus on github dashboard as shown in the following image
 
 <img src='./figs/deploy-clone-success.png'/>
 
@@ -118,6 +115,16 @@ I am able to invoke specific job
 ```bash
     act -w .\.github\workflows\clone-repo-on-vps.yml
 ```   
+</li>
+</ul>
+
+<h2>Possible improvments</h2>
+<ul>
+<li><strong>copy GITHUB_TOKEN to VPS</strong>
+There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use scp and simply copy the repo from the runner to the vps using scp 
+</li>
+<li><strong>hard code DEPLOYMENT_DIR</strong>
+possible solution is to use config file in the github actions level
 </li>
 </ul>
 
