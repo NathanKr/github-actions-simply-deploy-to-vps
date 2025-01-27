@@ -19,24 +19,6 @@ You have a private repo on Github and you want to deploy it to VPS upon git post
 
 <h2>Installation</h2>
 
-<h3>?????????? todo do it need this ????????????? Change Github Default branch default branch to development (once)</h3>
-1. i want push to be by default to development branch so will not invoke github action on the server , instead use act. only push to main will invoke Github Action on Github
-2. need to change on Github repo dashboard :
-- click on branch
-- click on 'New Branch' and enter a name 'development'
-  
-The result appear in the following image
-
-<img src='./figs/created-development-branch-on-github-dashboard.png'/>
-
-change the default branch from the repo dseeting as shown in the following image
-
-<img src='./figs/change-default-branch.png'/>
-
-After few more clicks we will get the development branch as default branch as shown in the following image
-
-<img src='./figs/development-is-default-branch.png'>
-
 
 <h3>Setup secrets.VPS_CICD_PRIVATE_KEY (once)</h3>
 explain why this is needed !!!!!!!!!!!!!!!!
