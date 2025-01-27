@@ -75,10 +75,13 @@ Using github actions the best solution is to use GITHUB_TOKEN .
 <li>trnasfer from the runner to the vps using ssh .runner use GITHUB_TOKEN and scp to copy the repo to the vps</li>
 </ol>
 
-?????????? open issue which one to choose ???????????
+
 
 <h3>Design question : where to store VPS SSH private key so the runner can access it </h3>
 The best solution to store screts in github is to use Github secrets which is part of the repo. And this is what i will use
+
+<strong>which one to choose desktop \ laptop</strong>
+It does not matter so i choose the cicd private key on the pc (\\wsl$\Ubuntu\home\nathan\.ssh\cicd_user_server_digital_ocean) for VPS_CICD_PRIVATE_KEY 
 
 <h2>Code Structure</h2>
 ....

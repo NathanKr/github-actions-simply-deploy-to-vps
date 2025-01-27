@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  deploy-transfer:
     if: false
     runs-on: ubuntu-latest
 
