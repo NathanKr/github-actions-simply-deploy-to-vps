@@ -13,7 +13,7 @@ jobs:
       USER: cicd
       VPS_IP: 134.209.28.40
       GITHUB_TOKEN_FILE: ~/github_token
-      SSH_PRIVATE_KEY: ~/.ssh/id_key  # Generic name for private key
+      SSH_PRIVATE_KEY: ~/.ssh/id_rsa #key  # Generic name for private key
 
     steps:
       - name: Checkout Code (on GitHub Actions runner)
