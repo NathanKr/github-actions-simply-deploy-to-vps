@@ -9,6 +9,11 @@ jobs:
   deploy-clone:
     runs-on: ubuntu-latest
 
+    env:
+      USER: cicd
+      VPS_IP: 134.209.28.40
+      GITHUB_TOKEN_FILE: ~/github_token
+
     steps:
       - name: Checkout Code (on GitHub Actions runner)
         uses: actions/checkout@v3
@@ -24,11 +29,11 @@ jobs:
 
       - name: Transfer GITHUB_TOKEN to VPS
         run: |
-          ssh cicd@134.209.28.40 "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
+          ssh $USER@$VPS_IP "echo '${{ secrets.GITHUB_TOKEN }}' > $GITHUB_TOKEN_FILE"
 
       - name: Clone Repository on VPS
         run: |
-          ssh cicd@134.209.28.40 "
-            export GITHUB_TOKEN=$(cat ~/github_token)
+          ssh $USER@$VPS_IP "
+            export GITHUB_TOKEN=$(cat $GITHUB_TOKEN_FILE)
             git clone https://${{ github.repository_owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ~/deployments/app
           "
