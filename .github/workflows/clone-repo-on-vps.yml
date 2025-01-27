@@ -21,7 +21,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure SSH
+      - name: Configure SSH (on GitHub Actions runner)
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.VPS_CICD_PRIVATE_KEY }}" > $SSH_PRIVATE_KEY
