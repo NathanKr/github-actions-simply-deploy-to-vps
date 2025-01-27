@@ -11,7 +11,7 @@ jobs:
 
     env:
       USER: cicd
-      VPS_IP: 134.209.28.40
+      VPS_IP: ${{ secrets.VPS_IP }}
       GITHUB_TOKEN_FILE: ~/github_token
       DEPLOYMENT_DIR: ~/deployments/app
 
