@@ -22,9 +22,10 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           echo "StrictHostKeyChecking no" > ~/.ssh/config
 
-      - name: Transfer GITHUB_TOKEN to VPS
-        run: |
-          ssh cicd@134.209.28.40 "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
+      # problematic when all ready exist
+      # - name: Transfer GITHUB_TOKEN to VPS
+      #   run: |
+      #     ssh cicd@134.209.28.40 "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
 
       - name: Clone Repository on VPS
         run: |
