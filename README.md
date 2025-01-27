@@ -2,7 +2,7 @@
 ....
 
 <h2>Project Description</h2>
-....
+Github actions workflow that clone private repo on vps deploy dir. The prev deploy dir is renamed  
 
 <h2>Motivation</h2>
 You have a private repo on Github and you want to deploy it to VPS upon git post to main branch using a workflow file
@@ -35,18 +35,18 @@ navigate to your repo setting and scroll down to 'Secrets and variables' as show
 
 
 
+<h2>Technologies Used</h2>
+<ul>
+<li>SSH</li>
+ <li>public \ private key authentication (VPS)</li>
+<li>Github Actions : workflow , secrets and GITHUB_TOKEN</li>
+<li>act (not a success here)</li>
+</ul>
 
 
 <h2>Usage</h2>
 ....
 
-<h2>Technologies Used</h2>
-<ul>
-<li>SSH</li>
- <li>public \ private key authentication (VPS)</li>
-<li>Github Actions</li>
-<li>act</li>
-</ul>
 
 <h2>High level design</h2>
 There are four components
@@ -89,13 +89,18 @@ It does not matter so i choose the cicd private key on the pc (\\wsl$\Ubuntu\hom
 ....
 
 <h2>Demo</h2>
-....
+following push to development branch you can check the staus on github dashboard as shown in the following image
+
+<img src='./figs/deploy-clone-success.png'/>
 
 <h2>Points of Interest</h2>
 <ul>
-<li><h3>Invoke parts of workflow</h3>
+<li><strong>VPS ip in github actions secrets</strong>
+Used like so just so it wont be expose to public yet work for the repo owner
+</li>
 
-i am able to invoke specific job
+<li><strong>Invoke parts of workflow using act</strong>
+I am able to invoke specific job
 
 ```bash
         act -j deploy-clone
