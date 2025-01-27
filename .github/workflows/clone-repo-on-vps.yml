@@ -26,7 +26,7 @@ jobs:
       # - name: Transfer GITHUB_TOKEN to VPS
       #   run: |
       #     ssh cicd@134.209.28.40 "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
-
+ 
       - name: Clone Repository on VPS
         run: |
           ssh cicd@134.209.28.40 "
