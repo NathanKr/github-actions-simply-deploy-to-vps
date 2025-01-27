@@ -91,8 +91,24 @@ It does not matter so i choose the cicd private key on the pc (\\wsl$\Ubuntu\hom
 
 <h2>Points of Interest</h2>
 <ul>
-    <li>...</li>
+<li><h3>Invoke parts of workflow</h3>
+
+i am able to invoke specific job
+
+```bash
+        act -j deploy-clone
+```
+
+i am not able to invoke specific workflow. it is starting but hangs
+
+```bash
+    act -w .\.github\workflows\clone-repo-on-vps.yml
+```   
+</li>
    
+<li><h3>act limitation</h3>
+not working 
+
 </ul>
 
 <h2>References</h2>
