@@ -4,6 +4,7 @@ on: [push] # event
 
 jobs:
   say-hello:
+    if: false
     runs-on: ubuntu-latest # runner version
 
     steps:

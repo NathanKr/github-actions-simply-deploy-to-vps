@@ -7,29 +7,28 @@ on:
 
 jobs:
   deploy:
-    if: false
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code (on GitHub Actions runner)
-      uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout Code (on GitHub Actions runner)
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Configure SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.VPS_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        echo "StrictHostKeyChecking no" > ~/.ssh/config
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_CICD_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no" > ~/.ssh/config
 
-    - name: Transfer GITHUB_TOKEN to VPS
-      run: |
-        ssh user@vps-address "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
+      - name: Transfer GITHUB_TOKEN to VPS
+        run: |
+          ssh user@vps-address "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
 
-    - name: Clone Repository on VPS
-      run: |
-        ssh user@vps-address "
-          export GITHUB_TOKEN=$(cat ~/github_token)
-          git clone https://${{ github.repository_owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ~/deployments/app
-        "
+      - name: Clone Repository on VPS
+        run: |
+          ssh user@vps-address "
+            export GITHUB_TOKEN=$(cat ~/github_token)
+            git clone https://${{ github.repository_owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ~/deployments/app
+          "
