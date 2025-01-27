@@ -9,38 +9,26 @@ jobs:
   deploy-clone:
     runs-on: ubuntu-latest
 
-    env:
-      USER: cicd
-      VPS_IP: 134.209.28.40
-      GITHUB_TOKEN_FILE: ~/github_token
-      SSH_PRIVATE_KEY: ~/.ssh/id_rsa #key  # Generic name for private key
-
     steps:
       - name: Checkout Code (on GitHub Actions runner)
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure SSH (on GitHub Actions runner)
+      - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_CICD_PRIVATE_KEY }}" > $SSH_PRIVATE_KEY
-          chmod 600 $SSH_PRIVATE_KEY
+          echo "${{ secrets.VPS_CICD_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           echo "StrictHostKeyChecking no" > ~/.ssh/config
 
-      # fails when all ready exist so removed at the end
       - name: Transfer GITHUB_TOKEN to VPS
         run: |
-          ssh -i $SSH_PRIVATE_KEY $USER@$VPS_IP "echo '${{ secrets.GITHUB_TOKEN }}' > $GITHUB_TOKEN_FILE"
- 
+          ssh cicd@134.209.28.40 "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
+
       - name: Clone Repository on VPS
         run: |
-          ssh -i $SSH_PRIVATE_KEY $USER@$VPS_IP "
-            export GITHUB_TOKEN=$(cat $GITHUB_TOKEN_FILE)
+          ssh cicd@134.209.28.40 "
+            export GITHUB_TOKEN=$(cat ~/github_token)
             git clone https://${{ github.repository_owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ~/deployments/app
           "
-
-      # no need to keep on vps for security reason , also solve the exist issue  
-      - name: Delete GITHUB_TOKEN from VPS
-        run: |
-          ssh -i $SSH_PRIVATE_KEY $USER@$VPS_IP "rm $GITHUB_TOKEN_FILE"          
