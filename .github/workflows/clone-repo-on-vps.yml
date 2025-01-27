@@ -13,7 +13,7 @@ jobs:
       USER: cicd
       VPS_IP: 134.209.28.40
       GITHUB_TOKEN_FILE: ~/github_token
-      SSH_PRIVATE_KEY: ~/.ssh/id_key  # Generic name for private key
+      #SSH_PRIVATE_KEY: ~/.ssh/id_key  # Generic name for private key
 
     steps:
       - name: Checkout Code (on GitHub Actions runner)
@@ -24,8 +24,8 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_CICD_PRIVATE_KEY }}" > $SSH_PRIVATE_KEY
-          chmod 600 $SSH_PRIVATE_KEY
+          echo "${{ secrets.VPS_CICD_PRIVATE_KEY }}" > ~/.ssh/id_key
+          chmod 600 ~/.ssh/id_key
           echo "StrictHostKeyChecking no" > ~/.ssh/config
 
       # fails when all ready exist so removed at the end
