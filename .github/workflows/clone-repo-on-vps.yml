@@ -18,17 +18,17 @@ jobs:
     - name: Configure SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.VPS_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
+        echo "${{ secrets.VPS_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
         echo "StrictHostKeyChecking no" > ~/.ssh/config
 
     - name: Transfer GITHUB_TOKEN to VPS
       run: |
-        ssh user@vps-address "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
+        ssh root@134.209.28.40 "echo '${{ secrets.GITHUB_TOKEN }}' > ~/github_token"
 
     - name: Clone Repository on VPS
       run: |
-        ssh user@vps-address "
+        ssh root@134.209.28.40 "
           export GITHUB_TOKEN=$(cat ~/github_token)
           git clone https://${{ github.repository_owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ~/deployments/app
         "
