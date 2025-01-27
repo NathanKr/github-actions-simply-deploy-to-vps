@@ -27,7 +27,7 @@ After few more clicks we will get the development branch as default branch as sh
 
 <img src='./figs/development-is-default-branch.png'>
 
-<h3>setup secrets.VPS_CICD_PRIVATE_KEY<h3>
+<h3>Setup secrets.VPS_CICD_PRIVATE_KEY</h3>
 
 navigate to your repo setting and scroll down to 'Secrets and variables' as shown in the image
 
@@ -99,16 +99,24 @@ i am able to invoke specific job
         act -j deploy-clone
 ```
 
-i am not able to invoke specific workflow. it is starting but hangs
+</li>
+   
+</ul>
+
+<h2>Open issues</h2>
+<ul>
+<li>id_rsa is used in clone-repo-on-vps.yml even though the key is not rsa. otherwise i started getting issues. may be relating to default or ~ on vps vs runner</li>
+ <li>act did not finish the workflow clone-repo-on-vps.yml as shownin the following image
+ 
+ <img src='./figs/act-fails.png'/>
+
+ </li>
+ <li>i am not able to invoke specific workflow. it is starting but hangs
 
 ```bash
     act -w .\.github\workflows\clone-repo-on-vps.yml
 ```   
 </li>
-   
-<li><h3>act limitation</h3>
-not working 
-
 </ul>
 
 <h2>References</h2>
