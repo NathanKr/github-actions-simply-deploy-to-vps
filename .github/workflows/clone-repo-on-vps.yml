@@ -21,7 +21,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure SSH
+      - name: Configure SSH (on GitHub Actions runner)
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.VPS_CICD_PRIVATE_KEY }}" > ~/.ssh/id_rsa
@@ -31,6 +31,14 @@ jobs:
       - name: Transfer GITHUB_TOKEN to VPS
         run: |
           ssh $USER@$VPS_IP "echo '${{ secrets.GITHUB_TOKEN }}' > $GITHUB_TOKEN_FILE"
+
+      - name: Rename Deployment Directory on VPS
+        run: |
+          ssh $USER@$VPS_IP "
+            if [ -d $DEPLOYMENT_DIR ]; then
+              mv $DEPLOYMENT_DIR ${DEPLOYMENT_DIR}_$(date +'%Y%m%d%H%M%S');
+            fi
+          "
 
       - name: Clone Repository on VPS
         run: |
