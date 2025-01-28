@@ -10,15 +10,15 @@ You have a private repo on Github and you want to deploy it to VPS upon git post
 <h2>Installation</h2>
 
 <h3>Workflow file</h3>
-Copy the workfile file clone-repo-on-vps.yml to your repository root under .github/workflows and tweak it to fit your project needs ,  for example edit VPS_IP
+Copy the workfile file <code>clone-repo-on-vps.yml</code> to your repository root under .github/workflows and tweak it to fit your project needs ,  for example edit VPS_IP
 
-<h3>Setup secrets.VPS_CICD_PRIVATE_KEY (once)</h3>
+<h3>Setup <code>VPS_CICD_PRIVATE_KEY</code> (once)</h3>
 
 Navigate to your repo setting and scroll down to 'Secrets and variables' as shown in the image
 
 <img src='./figs/setting-secrets.png'>
 
-Click on Actions under 'Secrets and variables' and click on 'New repository secret' and put here the private key of the cicd user as shown in the follwoing image 
+Click on Actions under 'Secrets and variables' and click on 'New repository secret' and put here the private key of the VPS cicd user as shown in the follwoing image 
 
 <img src='./figs/new-repository-secret.png'>
 
@@ -26,9 +26,9 @@ Click on Actions under 'Secrets and variables' and click on 'New repository secr
 <ul>
 <li>SSH</li>
 <li>Public \ private key authentication (VPS)</li>
-<li>Github Actions : workflow , secrets and GITHUB_TOKEN</li>
+<li>Github Actions : workflow , secrets and <code>GITHUB_TOKEN</code></li>
 <li>act (not a success here)</li>
-<li>Digital ocean droplet</li>
+<li>Digital Ocean droplet</li>
 </ul>
 
 
@@ -42,7 +42,7 @@ There are four components
 <li>your local machine - issue from here e.g. git push to main branch</li>
 <li>Github - your private repo to be deployed on VPS is here</li>
 <li>Github Actions Runner - this run the workflow file</li>
-<li>VPS - here the private repo is deployed on digital ocean droplet</li>
+<li>VPS - here the private repo is deployed on Digital Ocean droplet</li>
 </ul>
 
 These four component and the flow between them is described in this image
@@ -53,26 +53,26 @@ These four component and the flow between them is described in this image
 Following are questions that i have asked myself when starting this repo. After the repo is finish i have also the answewrs as listed here
 
 <h3>Design question : should i use ssh agent</h3>
-i see no benefit in my use case for ssh-agent
+i see no benefit in my use case for <code>ssh-agent</code>
 
 <h3>Design question : the repo is privte so how to access it</h3>
-Using github actions the best solution is to use GITHUB_TOKEN .
+Using github actions the best solution is to use <code>GITHUB_TOKEN</code> .
 
 <h3>Design question : how the VPS get the private repo</h3>
 
 <ol>
-<li>clone by the VPS . runner need to copy GITHUB_TOKEN to the VPS</li>
-<li>once the VPS has GITHUB_TOKEN he canuse git clone on the private repo</li>
+<li>clone by the VPS . <code>runner</code> need to copy <code>GITHUB_TOKEN</code> to the VPS</li>
+<li>once the VPS has <code>GITHUB_TOKEN</code> he canuse git clone on the private repo</li>
 </ol>
 
-Comment : you dont need GITHUB_TOKEN in case the repo is public
+Comment : you dont need <code>GITHUB_TOKEN</code> in case the repo is public
 
-<h3>Design question : where to store VPS SSH private key so the runner can access it </h3>
+<h3>Design question : where to store VPS SSH private key so the <code>runner</code> can access it </h3>
 The best solution to store screts in github is to use Github secrets which is part of the repo. And this is what i will use
 
 
 <h2>Code Structure</h2>
-The code of the workflow file clone-repo-on-vps.yml is shown as follows
+The code of the workflow file <code>clone-repo-on-vps.yml</code> is shown as follows
 
 <h3>Setup</h3>
 
@@ -148,7 +148,7 @@ jobs:
 
 <h3>Step 6</h3>
 
-```bash
+```yml
       - name: Delete GITHUB_TOKEN from VPS
         run: |
           ssh $USER@$VPS_IP "rm $GITHUB_TOKEN_FILE"
@@ -178,11 +178,8 @@ I am able to invoke specific job
 
 <h2>Possible improvments</h2>
 <ul>
-<li><strong>Eliminate copy GITHUB_TOKEN to VPS</strong>
-There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use scp and simply copy the repo from the runner to the VPS using scp 
-</li>
-<li><strong>Eliminate hard code DEPLOYMENT_DIR</strong>
-possible solution is to use config file in the github actions level
+<li><strong>Eliminate copy <code>GITHUB_TOKEN</code> to VPS</strong>
+There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use <code>scp</code> and simply copy the repo from the <code>runner</code> to the VPS using it
 </li>
 <li><strong>Add specific project stuff to workflow</strong>
 You might have packages you need to install , stop the app before deploy , restart it after deploy and alike. you can add all of this as bash code to the workflow file or add script and call it from the workflow. 
@@ -192,9 +189,9 @@ You might have packages you need to install , stop the app before deploy , resta
 
 <h2>Open issues</h2>
 <ul>
-<li>id_rsa is used in clone-repo-on-vps.yml as generic private key name even though the key is not rsa. otherwise i started getting issues. may be relating to default or ~ on VPS vs runner</li>
+<li><code>id_rsa</code> is used in <code>clone-repo-on-vps.yml</code> as generic private key name even though the key is not rsa. otherwise i started getting issues. may be relating to default or ~ on VPS vs <code>runner</code></li>
 
- <li>act did not finish the workflow clone-repo-on-vps.yml as shownin the following image
+ <li>act did not finish the workflow <code>clone-repo-on-vps.yml</code> as shown in the following image
  
  <img src='./figs/act-fails.png'/>
 
