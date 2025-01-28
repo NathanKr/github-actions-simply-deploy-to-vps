@@ -8,7 +8,7 @@
 Basic VPS deploy workflow using Github Actions
 
 <h2>Project Description</h2>
-Github actions workflow that clone private repo on vps deploy folder. The prev deploy folder is renamed  
+Github actions workflow that clone private repo on VPS deploy folder. The prev deploy folder is renamed  
 
 <h2>Motivation</h2>
 You have a private repo on Github and you want to deploy it to VPS upon git post to main branch using a workflow file
@@ -28,14 +28,15 @@ navigate to your repo setting and scroll down to 'Secrets and variables' as show
 <h2>Technologies Used</h2>
 <ul>
 <li>SSH</li>
- <li>public \ private key authentication (VPS)</li>
+<li>Public \ private key authentication (VPS)</li>
 <li>Github Actions : workflow , secrets and GITHUB_TOKEN</li>
 <li>act (not a success here)</li>
+<li>Digital ocean droplet</li>
 </ul>
 
 
 <h2>Usage</h2>
-you simply push to main branch
+Push to main branch
 
 
 <h2>High level design</h2>
@@ -44,27 +45,27 @@ There are four components
 <li>your local machine - issue from here e.g. git push to main branch</li>
 <li>Github - your private repo to be deployed on VPS is here</li>
 <li>Github Actions Runner - this run the workflow file</li>
-<li>VPS - here the private repo is deployed</li>
-
+<li>VPS - here the private repo is deployed on digital ocean droplet</li>
 </ul>
-todo nath ---> make this an image
-<img src='./figs/high-level-schema.drawio'/>
+
+These four component and the flow between them is described in this image
+<img src='./figs/high-level-schema.png'/>
 
 <h2>Design</h2>
 
 Following are questions that i have asked myself when starting this repo. After the repo is finish i have also the answewrs as listed here
 
 <h3>Design question : should i use ssh agent</h3>
-i see no benefit in my use case but need to re-check
+i see no benefit in my use case for ssh-agent
 
 <h3>Design question : the repo is privte so how to access it</h3>
 Using github actions the best solution is to use GITHUB_TOKEN .
 
-<h3>Design question : how the vps get the repo</h3>
+<h3>Design question : how the VPS get the repo</h3>
 
 <ol>
-<li>clone by the vps . runner need to copy GITHUB_TOKEN to the vps</li>
-<li>trnasfer from the runner to the vps using ssh .runner use GITHUB_TOKEN and scp to copy the repo to the vps</li>
+<li>clone by the VPS . runner need to copy GITHUB_TOKEN to the VPS</li>
+<li>trnasfer from the runner to the VPS using ssh .runner use GITHUB_TOKEN and scp to copy the repo to the VPS</li>
 </ol>
 
 
@@ -103,7 +104,7 @@ I am able to invoke specific job
 
 <h2>Open issues</h2>
 <ul>
-<li>id_rsa is used in clone-repo-on-vps.yml even though the key is not rsa. otherwise i started getting issues. may be relating to default or ~ on vps vs runner</li>
+<li>id_rsa is used in clone-repo-on-vps.yml even though the key is not rsa. otherwise i started getting issues. may be relating to default or ~ on VPS vs runner</li>
  <li>act did not finish the workflow clone-repo-on-vps.yml as shownin the following image
  
  <img src='./figs/act-fails.png'/>
@@ -120,7 +121,7 @@ I am able to invoke specific job
 <h2>Possible improvments</h2>
 <ul>
 <li><strong>Eliminate copy GITHUB_TOKEN to VPS</strong>
-There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use scp and simply copy the repo from the runner to the vps using scp 
+There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use scp and simply copy the repo from the runner to the VPS using scp 
 </li>
 <li><strong>Eliminate hard code DEPLOYMENT_DIR</strong>
 possible solution is to use config file in the github actions level
