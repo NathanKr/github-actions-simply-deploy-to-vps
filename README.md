@@ -8,7 +8,7 @@ Basic VPS deploy workflow using Github Actions
 
 
 <h2>Motivation</h2>
-You have a private repo on Github and you want to deploy it to VPS upon git post to main branch using a workflow file
+You have a private repo on Github and you want to deploy it to VPS upon git push to main branch using a workflow file
 
 <h2>Installation</h2>
 
@@ -54,8 +54,6 @@ Push to main branch
 <h2>Design</h2>
 <p>Following are questions that I asked myself when starting this repo. After the repo is finished, I have also provided the answers as listed here:</p>
 
-<h3>Design Question: Should I use SSH Agent?</h3>
-<p>I see no benefit in my use case for <code>ssh-agent</code>.</p>
 
 <h3>Design Question: The repo is private, so how to access it?</h3>
 <p>Using GitHub Actions, the best solution is to use <code>GITHUB_TOKEN</code>.</p>
