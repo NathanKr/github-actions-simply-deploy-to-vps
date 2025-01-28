@@ -1,8 +1,11 @@
 <h1>Project Name</h1>
 Basic VPS deploy workflow using Github Actions
 
+
+
 <h2>Project Description</h2>
-Github actions workflow that clone private repo on VPS deploy folder. The prev deploy folder is renamed  
+<p>GitHub Actions workflow that clones a private repo to a VPS deploy folder. The previous deploy folder is renamed.</p>
+
 
 <h2>Motivation</h2>
 You have a private repo on Github and you want to deploy it to VPS upon git post to main branch using a workflow file
