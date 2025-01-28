@@ -1,9 +1,3 @@
-<h1>todo - remove at end</h1>
-<ul>
-<li>where is this workflow ???? as template ?? </li>
-</ul>
-
-
 <h1>Project Name</h1>
 Basic VPS deploy workflow using Github Actions
 
@@ -15,15 +9,18 @@ You have a private repo on Github and you want to deploy it to VPS upon git post
 
 <h2>Installation</h2>
 
+<h3>Workflow file</h3>
+Copy the workfile file clone-repo-on-vps.yml to your repository root under .github/workflows and tweak it to fit your project needs ,  for example edit VPS_IP
 
 <h3>Setup secrets.VPS_CICD_PRIVATE_KEY (once)</h3>
-explain why this is needed !!!!!!!!!!!!!!!!
 
-navigate to your repo setting and scroll down to 'Secrets and variables' as shown in the image
+Navigate to your repo setting and scroll down to 'Secrets and variables' as shown in the image
 
 <img src='./figs/setting-secrets.png'>
 
+Click on Actions under 'Secrets and variables' and click on 'New repository secret' and put here the private key of the cicd user as shown in the follwoing image 
 
+<img src='./figs/new-repository-secret.png'>
 
 <h2>Technologies Used</h2>
 <ul>
@@ -61,24 +58,101 @@ i see no benefit in my use case for ssh-agent
 <h3>Design question : the repo is privte so how to access it</h3>
 Using github actions the best solution is to use GITHUB_TOKEN .
 
-<h3>Design question : how the VPS get the repo</h3>
+<h3>Design question : how the VPS get the private repo</h3>
 
 <ol>
 <li>clone by the VPS . runner need to copy GITHUB_TOKEN to the VPS</li>
-<li>trnasfer from the runner to the VPS using ssh .runner use GITHUB_TOKEN and scp to copy the repo to the VPS</li>
+<li>once the VPS has GITHUB_TOKEN he canuse git clone on the private repo</li>
 </ol>
 
-
+Comment : you dont need GITHUB_TOKEN in case the repo is public
 
 <h3>Design question : where to store VPS SSH private key so the runner can access it </h3>
 The best solution to store screts in github is to use Github secrets which is part of the repo. And this is what i will use
 
-<strong>which one to choose desktop \ laptop</strong>
-It does not matter so i choose the cicd private key on the pc (\\wsl$\Ubuntu\home\nathan\.ssh\cicd_user_server_digital_ocean) for VPS_CICD_PRIVATE_KEY 
 
 <h2>Code Structure</h2>
-put here all workflow or part of it ???????
-....
+The code of the workflow file clone-repo-on-vps.yml is shown as follows
+
+<h3>Setup</h3>
+
+```bash
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-clone:
+    runs-on: ubuntu-latest
+
+    env:
+      USER: cicd
+      VPS_IP: ${{ secrets.VPS_IP }}
+      GITHUB_TOKEN_FILE: ~/github_token
+      DEPLOYMENT_DIR: ~/deployments/app
+```
+
+<h3>Step 1</h3>
+
+```bash
+      - name: Checkout Code (on GitHub Actions runner)
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+<h3>Step 2</h3>
+
+```bash
+      - name: Configure SSH (on GitHub Actions runner)
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_CICD_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "StrictHostKeyChecking no" > ~/.ssh/config
+```
+
+<h3>Step 3</h3>
+
+```bash
+      - name: Transfer GITHUB_TOKEN to VPS
+        run: |
+          ssh $USER@$VPS_IP "echo '${{ secrets.GITHUB_TOKEN }}' > $GITHUB_TOKEN_FILE"
+```
+
+<h3>Step 4</h3>
+
+```bash
+      - name: Rename Deployment Directory on VPS
+        run: |
+          ssh $USER@$VPS_IP "
+            if [ -d $DEPLOYMENT_DIR ]; then
+              mv $DEPLOYMENT_DIR ${DEPLOYMENT_DIR}_$(date +'%Y%m%d%H%M%S');
+            fi
+          "
+```
+
+<h3>Step 5</h3>
+
+```bash
+      - name: Clone Repository on VPS
+        run: |
+          ssh $USER@$VPS_IP "
+            export GITHUB_TOKEN=$(cat $GITHUB_TOKEN_FILE)
+            git clone https://${{ github.repository_owner }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} $DEPLOYMENT_DIR
+          "
+```
+
+<h3>Step 6</h3>
+
+```bash
+      - name: Delete GITHUB_TOKEN from VPS
+        run: |
+          ssh $USER@$VPS_IP "rm $GITHUB_TOKEN_FILE"
+```
 
 <h2>Demo</h2>
 following push to main branch you can check the staus on github dashboard as shown in the following image
@@ -102,9 +176,24 @@ I am able to invoke specific job
    
 </ul>
 
+<h2>Possible improvments</h2>
+<ul>
+<li><strong>Eliminate copy GITHUB_TOKEN to VPS</strong>
+There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use scp and simply copy the repo from the runner to the VPS using scp 
+</li>
+<li><strong>Eliminate hard code DEPLOYMENT_DIR</strong>
+possible solution is to use config file in the github actions level
+</li>
+<li><strong>Add specific project stuff to workflow</strong>
+You might have packages you need to install , stop the app before deploy , restart it after deploy and alike. you can add all of this as bash code to the workflow file or add script and call it from the workflow. 
+</li>
+</ul>
+
+
 <h2>Open issues</h2>
 <ul>
-<li>id_rsa is used in clone-repo-on-vps.yml even though the key is not rsa. otherwise i started getting issues. may be relating to default or ~ on VPS vs runner</li>
+<li>id_rsa is used in clone-repo-on-vps.yml as generic private key name even though the key is not rsa. otherwise i started getting issues. may be relating to default or ~ on VPS vs runner</li>
+
  <li>act did not finish the workflow clone-repo-on-vps.yml as shownin the following image
  
  <img src='./figs/act-fails.png'/>
@@ -118,18 +207,6 @@ I am able to invoke specific job
 </li>
 </ul>
 
-<h2>Possible improvments</h2>
-<ul>
-<li><strong>Eliminate copy GITHUB_TOKEN to VPS</strong>
-There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use scp and simply copy the repo from the runner to the VPS using scp 
-</li>
-<li><strong>Eliminate hard code DEPLOYMENT_DIR</strong>
-possible solution is to use config file in the github actions level
-</li>
-<li><strong>Add specific project stuff to workflow</strong>
-You might have packages you need to install , stop the app before deploy , restart it after deploy and alike. you can add all of this as bash code to the workflow file or add script and call it from the workflow. 
-</li>
-</ul>
 
 <h2>References</h2>
 <ul>
