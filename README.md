@@ -1,6 +1,5 @@
 <h1>todo - remove at end</h1>
 <ul>
-<li>should i install packages ????</li>
 <li>where is this workflow ???? as template ?? </li>
 </ul>
 
@@ -120,11 +119,14 @@ I am able to invoke specific job
 
 <h2>Possible improvments</h2>
 <ul>
-<li><strong>copy GITHUB_TOKEN to VPS</strong>
+<li><strong>Eliminate copy GITHUB_TOKEN to VPS</strong>
 There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use scp and simply copy the repo from the runner to the vps using scp 
 </li>
-<li><strong>hard code DEPLOYMENT_DIR</strong>
+<li><strong>Eliminate hard code DEPLOYMENT_DIR</strong>
 possible solution is to use config file in the github actions level
+</li>
+<li><strong>Add specific project stuff to workflow</strong>
+You might have packages you need to install , stop the app before deploy , restart it after deploy and alike. you can add all of this as bash code to the workflow file or add script and call it from the workflow. 
 </li>
 </ul>
 
@@ -133,5 +135,4 @@ possible solution is to use config file in the github actions level
     <li><a href='https://www.youtube.com/watch?v=R48-UaZ4q1k'>SSH Essentials in 7.5 minutes </a></li>
     <li><a href='https://youtu.be/x239z6DdE0A?si=Di81DK0RrphVxkmZ'>Introduction to GitHub Actions: Learn Workflows with Examples</a></li>
     <li><a href='https://youtu.be/Mir-uLSQmwA?si=IYPgxQBjJOLtvGod'>Efficiently Run GitHub Actions Workflows Locally with act Tool </a></li>
-    
 </ul>
