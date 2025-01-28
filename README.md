@@ -10,65 +10,62 @@ You have a private repo on Github and you want to deploy it to VPS upon git post
 <h2>Installation</h2>
 
 <h3>Workflow file</h3>
-Copy the workfile file <code>clone-repo-on-vps.yml</code> to your repository root under .github/workflows and tweak it to fit your project needs ,  for example edit VPS_IP
+Copy the workfile file <code>clone-repo-on-vps.yml</code> to your repository root under <code>.github/workflows</code> and tweak it to fit your project needs ,  for example edit VPS_IP
 
 <h3>Setup <code>VPS_CICD_PRIVATE_KEY</code> (once)</h3>
 
-Navigate to your repo setting and scroll down to 'Secrets and variables' as shown in the image
+<p>Navigate to your GitHub repository settings and scroll down to the 'Secrets and variables' section on the dashboard as shown in the image:</p>
+<img src='./figs/setting-secrets.png' alt="GitHub Secrets and Variables Dashboard">
 
-<img src='./figs/setting-secrets.png'>
-
-Click on Actions under 'Secrets and variables' and click on 'New repository secret' and put here the private key of the VPS cicd user as shown in the follwoing image 
-
-<img src='./figs/new-repository-secret.png'>
+<p>Click on <code>Actions</code> under 'Secrets and variables' and then click on 'New repository secret'. Enter the private key of the VPS <code>cicd</code> user as shown in the following image:</p>
+<img src='./figs/new-repository-secret.png' alt="New Repository Secret">
 
 <h2>Technologies Used</h2>
 <ul>
-<li>SSH</li>
-<li>Public \ private key authentication (VPS)</li>
-<li>Github Actions : workflow , secrets and <code>GITHUB_TOKEN</code></li>
-<li>act (not a success here)</li>
-<li>Digital Ocean droplet</li>
+  <li>SSH</li>
+  <li>Public / Private Key Authentication (VPS)</li>
+  <li>GitHub Actions: Workflow, Secrets, and <code>GITHUB_TOKEN</code></li>
+  <li>act (not a success here)</li>
+  <li>Digital Ocean Droplet</li>
 </ul>
+
 
 
 <h2>Usage</h2>
 Push to main branch
 
 
-<h2>High level design</h2>
-There are four components
+<h2>High-Level Design</h2>
+<p>There are four components:</p>
 <ul>
-<li>your local machine - issue from here e.g. git push to main branch</li>
-<li>Github - your private repo to be deployed on VPS is here</li>
-<li>Github Actions Runner - this run the workflow file</li>
-<li>VPS - here the private repo is deployed on Digital Ocean droplet</li>
+  <li>Your local machine - Issues commands from here, e.g., <code>git push</code> to the main branch.</li>
+  <li>GitHub - Your private repository to be deployed on the VPS is hosted here.</li>
+  <li>GitHub Actions Runner - This executes the workflow file.</li>
+  <li>VPS - Your private repository is deployed here on a Digital Ocean droplet.</li>
 </ul>
 
-These four component and the flow between them is described in this image
-<img src='./figs/high-level-schema.png'/>
+<p>These four components and the flow between them are described in this image:</p>
+<img src='./figs/high-level-schema.png' alt="High-Level Schema">
+
 
 <h2>Design</h2>
+<p>Following are questions that I asked myself when starting this repo. After the repo is finished, I have also provided the answers as listed here:</p>
 
-Following are questions that i have asked myself when starting this repo. After the repo is finish i have also the answewrs as listed here
+<h3>Design Question: Should I use SSH Agent?</h3>
+<p>I see no benefit in my use case for <code>ssh-agent</code>.</p>
 
-<h3>Design question : should i use ssh agent</h3>
-i see no benefit in my use case for <code>ssh-agent</code>
+<h3>Design Question: The repo is private, so how to access it?</h3>
+<p>Using GitHub Actions, the best solution is to use <code>GITHUB_TOKEN</code>.</p>
 
-<h3>Design question : the repo is privte so how to access it</h3>
-Using github actions the best solution is to use <code>GITHUB_TOKEN</code> .
-
-<h3>Design question : how the VPS get the private repo</h3>
-
+<h3>Design Question: How does the VPS get the private repo?</h3>
 <ol>
-<li>clone by the VPS . <code>runner</code> need to copy <code>GITHUB_TOKEN</code> to the VPS</li>
-<li>once the VPS has <code>GITHUB_TOKEN</code> he canuse git clone on the private repo</li>
+  <li>The VPS clones the repo. The <code>runner</code> needs to copy <code>GITHUB_TOKEN</code> to the VPS.</li>
+  <li>Once the VPS has <code>GITHUB_TOKEN</code>, it can use <code>git clone</code> on the private repo.</li>
 </ol>
+<p>Comment: You don't need <code>GITHUB_TOKEN</code> if the repo is public.</p>
 
-Comment : you dont need <code>GITHUB_TOKEN</code> in case the repo is public
-
-<h3>Design question : where to store VPS SSH private key so the <code>runner</code> can access it </h3>
-The best solution to store screts in github is to use Github secrets which is part of the repo. And this is what i will use
+<h3>Design Question: Where to store the VPS SSH private key so the <code>runner</code> can access it?</h3>
+<p>The best solution to store secrets in GitHub is to use GitHub Secrets, which is part of the repository. And this is what I will use.</p>
 
 
 <h2>Code Structure</h2>
@@ -155,59 +152,58 @@ jobs:
 ```
 
 <h2>Demo</h2>
-following push to main branch you can check the staus on github dashboard as shown in the following image
+<p>After pushing to the main branch, you can check the status on the GitHub dashboard as shown in the following image:</p>
 
-<img src='./figs/deploy-clone-success.png'/>
+<img src='./figs/deploy-clone-success.png' alt="Deployment Clone Success">
 
 <h2>Points of Interest</h2>
 <ul>
-<li><strong>VPS ip in github actions secrets</strong>
-Used like so just so it wont be expose to public yet work for the repo owner
-</li>
+  <li>
+    <strong>VPS IP in GitHub Actions Secrets</strong><br>
+    Used like so to ensure it won't be exposed to the public, yet works for the repo owner.
+  </li>
 
-<li><strong>Invoke parts of workflow using act</strong>
-I am able to invoke specific job
-
-```bash
-        act -j deploy-clone
-```
-
-</li>
-   
+  <li>
+    <strong>Invoke Parts of Workflow Using <code>act</code></strong><br>
+    I am able to invoke a specific job:
+    <pre><code>act -j deploy-clone</code></pre>
+  </li>
 </ul>
 
-<h2>Possible improvments</h2>
+<h2>Possible Improvements</h2>
 <ul>
-<li><strong>Eliminate copy <code>GITHUB_TOKEN</code> to VPS</strong>
-There is some security risk here because the token is exposed on the VPS ,altough it is removed after the job is ended. You might eliminate this by maybe use <code>scp</code> and simply copy the repo from the <code>runner</code> to the VPS using it
-</li>
-<li><strong>Add specific project stuff to workflow</strong>
-You might have packages you need to install , stop the app before deploy , restart it after deploy and alike. you can add all of this as bash code to the workflow file or add script and call it from the workflow. 
-</li>
+  <li>
+    <strong>Eliminate Copy <code>GITHUB_TOKEN</code> to VPS</strong><br>
+    There is some security risk here because the token is exposed on the VPS, although it is removed after the job is ended. You might eliminate this by using <code>scp</code> and simply copying the repo from the <code>runner</code> to the VPS directly.
+  </li>
+  <li>
+    <strong>Add Specific Project Stuff to Workflow</strong><br>
+    You might have packages you need to install, stop the app before deployment, restart it after deployment, and similar tasks. You can add all of this as bash code to the workflow file or create a script and call it from the workflow.
+  </li>
 </ul>
 
 
-<h2>Open issues</h2>
+<h2>Open Issues</h2>
 <ul>
-<li><code>id_rsa</code> is used in <code>clone-repo-on-vps.yml</code> as generic private key name even though the key is not rsa. otherwise i started getting issues. may be relating to default or ~ on VPS vs <code>runner</code></li>
+  <li>
+    <code>id_rsa</code> is used in <code>clone-repo-on-vps.yml</code> as a generic private key name even though the key is not RSA. Otherwise, I started getting issues. This may be related to default settings or <code>~</code> on the VPS versus the <code>runner</code>.
+  </li>
 
- <li>act did not finish the workflow <code>clone-repo-on-vps.yml</code> as shown in the following image
- 
- <img src='./figs/act-fails.png'/>
+  <li>
+    act did not finish the workflow <code>clone-repo-on-vps.yml</code> as shown in the following image:
+    <br>
+    <img src='./figs/act-fails.png' alt="act fails to finish workflow">
+  </li>
 
- </li>
- <li>i am not able to invoke specific workflow. it is starting but hangs
-
-```bash
-    act -w .\.github\workflows\clone-repo-on-vps.yml
-```   
-</li>
+  <li>
+    I am not able to invoke a specific workflow. It starts but hangs:
+    <pre><code>act -w .\.github\workflows\clone-repo-on-vps.yml</code></pre>
+  </li>
 </ul>
-
 
 <h2>References</h2>
 <ul>
-    <li><a href='https://www.youtube.com/watch?v=R48-UaZ4q1k'>SSH Essentials in 7.5 minutes </a></li>
-    <li><a href='https://youtu.be/x239z6DdE0A?si=Di81DK0RrphVxkmZ'>Introduction to GitHub Actions: Learn Workflows with Examples</a></li>
-    <li><a href='https://youtu.be/Mir-uLSQmwA?si=IYPgxQBjJOLtvGod'>Efficiently Run GitHub Actions Workflows Locally with act Tool </a></li>
+    <li><a href="https://www.youtube.com/watch?v=R48-UaZ4q1k">SSH Essentials in 7.5 minutes</a></li>
+    <li><a href="https://youtu.be/x239z6DdE0A?si=Di81DK0RrphVxkmZ">Introduction to GitHub Actions: Learn Workflows with Examples</a></li>
+    <li><a href="https://youtu.be/Mir-uLSQmwA?si=IYPgxQBjJOLtvGod">Efficiently Run GitHub Actions Workflows Locally with act Tool</a></li>
 </ul>
